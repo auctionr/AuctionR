@@ -46,14 +46,22 @@ a:hover{
   cursor: pointer;
   opacity: 0.8;
 }
-
+fa-angle-double-down
+{
+  size:5em;
+}
 .yellow-home-btn:hover{
   box-shadow: var(--c3) 0px 0px 5px;
   opacity: 1;
   transition: all .2s ease-in-out;
   
 }
-
+.arrow
+{
+  display: flex;
+justify-content: center;
+margin: 3rem 0rem 0rem 0;
+}
 .home-logo{
   display: flex;
   justify-content: center;
