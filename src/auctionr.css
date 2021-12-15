@@ -8,3 +8,15 @@
   --f2: 'Montserrat Alternates', sans-serif;
   --f3: 'Martel Sans', sans-serif;
 }
+
+body, html{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: var(--c1);
+  font-family: var(--f3);
+  color: var(--c4);
+}

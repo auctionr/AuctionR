@@ -8,6 +8,7 @@
     <!-- ------------------------------------------------------------- -->
     <!-- Base -->
 
+    <link rel="shortcut icon" href="../public/favicon.ico" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
@@ -35,5 +36,9 @@
 
     <!-- ------------------------------------------------------------- -->
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <!-- Code here -->
+    </div>
+  </body>
 </html>
