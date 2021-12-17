@@ -1,224 +1,206 @@
 :root {
-    --c1: #000000;
-    --c2: #e6b31e;
-    --c3: #cacaca;
-    --c4: #eae3b5;
-  
-    --f1: "Catamaran", sans-serif;
-    --f2: "Montserrat Alternates", sans-serif;
-    --f3: "Martel Sans", sans-serif;
-  }
-  
-  body,
-  html {
-    margin: 0;
-    padding: 0.5rem 0 .5rem 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background: var(--c1);
-    font-family: var(--f3);
-    color: var(--c4);
-  }
-  
-  a {
-    color: var(--c4);
-    text-decoration: none;
-  }
-  
-  a:hover {
-    color: var(--c4);
-  }
-  
-  h4{
-    color: var(--c3);
-  }
-  
+  --c1: #000000;
+  --c2: #e6b31e;
+  --c3: #cacaca;
+  --c4: #eae3b5;
 
-  
- 
-  
+  --f1: "Catamaran", sans-serif;
+  --f2: "Montserrat Alternates", sans-serif;
+  --f3: "Martel Sans", sans-serif;
+}
 
-  .about-title{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: var(--f2);
-    font-size: 2rem;
-    font-weight: 800;
-    margin: 0 0 2rem 0;
-  }
-  
- 
+body,
+html {
+  margin: 0;
+  padding: 0.5rem 0 0.5rem 0;
+  box-sizing: border-box;
+}
 
-  
-  .footer{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    font-size: medium;
-    font-weight: 400;
-  }
-  
-  HTML CSSResult Skip Results Iframe
-  EDIT ON
-        
-      
-      .login{
-         
-          width: 50em;
-          vertical-align: middle;
-          display: inline-block;
-        
-          height: 50em;
-          margin: 8em auto;
-          justify-content: center;
-          border-radius: 1.5em;
-          box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
-      }
-      
-      .sign {
-          padding-top: 1em;
-          color: var(--c3);
-          font-family: var(--f2);
-          font-weight: bold;
-          font-size: 2em;
-          margin-left:-2em;
-         
-  
-      }
-      
-      .un {
-      width: 30%;
-      color: var(--c4);
-      opacity:0.6;
-      font-weight: 800;
-      font-size: 1.12em;
-      letter-spacing: .1em;
-      background: rgba(245, 245, 245, 0.04);
-      padding: 10px 20px;
-      border: none;
-      border-radius: 2.5em;
-      outline: none;
-      box-sizing: border-box;
-      border: 2px solid rgba(0, 0, 0, 0.02);
-      margin-bottom: 50px;
-      margin-left: 24em;
-      text-align: center;
-      margin-bottom: 1.3em;
-      font-family: var(--f1);
-      justify-content: center;
-      }
-      
-      form.form1 {
-          padding-top: 2em;
-      }
-      
-      .pass {
-        display:flex;
-      width: 30%;
-      color: var(--c4);
-      opacity:0.6;
-      font-weight: 800;
-      font-size: 1.12em;
-      letter-spacing: .1em;
-      background: rgba(136, 126, 126, 0.04);
-      padding: 10px 20px;
-      border: none;
-      border-radius: 2.5em;
-      outline: none;
-      box-sizing: border-box;
-     
-      margin-bottom: 50px;
-      margin-left: 24em;
-      text-align: center;
-      margin-bottom: 27px;
-      font-family: var(--f1);
-      }
-      
-     
-      .un:focus, .pass:focus {
-          border: 2px solid var(--c3) !important;
-          
-      }
-      
-      .submit {
-        cursor: pointer;
-          border-radius: 6em;
-          color: var(--c1);
-          font-family: var(--f2);
-          font-weight: 900;
-          background: linear-gradient(to right,#BF953F, #FCF6BA,#B38728,#AA771C);
-          border: 0;
-        
-          padding-left: 40px;
-          padding-right: 40px;
-          padding-bottom: 10px;
-          padding-top: 10px;
-          font-family: var(--f2);
-          margin-left: 43em;
-          margin-top: 50;
-          margin-bottom:70px;
-          font-size: 13px;
-          box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-      }
-      
-      .forgot {
-          text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-          color:var(--c3);
-          padding-top: 37px;
-          margin-left:-45px;
-      }
-      
-      a {
-          text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
-          color: var(--c3);
-          text-decoration: none
-      }
-     
-      
-  label > input[type="radio"] {
-    display: none;
-   
-  }
-  label > input[type="radio"] + *::before {
-    content: "";
-    display:inline-flex;
-   
-   vertical-align: bottom;
-    width: 1rem;
-    height: 1rem;
-    margin-right: 0.3rem;
-    margin-left: 3em;
-    border-radius: 50%;
-    border-style: solid;
-    border-width: 0.1rem;
-    border-color: gray;
-  }
-  label > input[type="radio"]:checked + * {
-    color: var(--c4);
-  }
-  label > input[type="radio"]:checked + *::before {
-    background: radial-gradient(var(--c3) 0%, var(--c3)  40%, transparent 50%, transparent);
-    border-color: var(--c4);
-  }
-  
-  /* basic layout */
-  fieldset {
-    
-    margin:4em 4em 4em 25em;
-  }
-  
- .register
-  {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  
-  }
-  /*
+body {
+  background: var(--c1);
+  font-family: var(--f3);
+  color: var(--c4);
+}
+
+a {
+  color: var(--c4);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--c4);
+}
+
+h4 {
+  color: var(--c3);
+}
+
+.about-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--f2);
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0 0 2rem 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: medium;
+  font-weight: 400;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.5em;
+  box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+}
+
+.sign {
+  color: var(--c3);
+  font-family: var(--f2);
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.un {
+  color: var(--c4);
+  opacity: 0.6;
+  font-weight: 800;
+  font-size: 1.12em;
+  letter-spacing: 0.1em;
+  background: rgba(245, 245, 245, 0.04);
+  border: none;
+  border-radius: 2.5em;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  text-align: center;
+  font-family: var(--f1);
+  margin: .5rem 0;
+}
+
+.form1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-reg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.pass {
+  color: var(--c4);
+  opacity: 0.6;
+  font-weight: 800;
+  font-size: 1.12em;
+  letter-spacing: 0.1em;
+  background: rgba(245, 245, 245, 0.04);
+  border: none;
+  border-radius: 2.5em;
+  outline: none;
+  border: 2px solid rgba(0, 0, 0, 0.02);
+  text-align: center;
+  font-family: var(--f1);
+  margin: .5rem 0 2rem 0;
+}
+
+.login-choice{
+  display: flex;
+  align-items: center;
+}
+
+.l-choice{
+  display: flex;
+  align-items: center;
+}
+
+.un:focus,
+.pass:focus {
+  border: 2px solid var(--c3) !important;
+}
+
+.signin {
+  cursor: pointer;
+  border-radius: 6em;
+  color: var(--c1);
+  font-family: var(--f2);
+  font-weight: 900;
+  background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #aa771c);
+  border: 0;
+  padding: .5em 1em;
+  font-family: var(--f2);
+  font-size: 1rem;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  margin: 2rem 0 1rem 0;
+}
+
+.forgot {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: var(--c3);
+  padding-top: 37px;
+  margin-left: -45px;
+}
+
+a {
+  text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+  color: var(--c3);
+  text-decoration: none;
+}
+
+label > input[type="radio"] {
+  display: none;
+}
+label > input[type="radio"] + *::before {
+  content: "";
+  display: inline-flex;
+
+  vertical-align: bottom;
+  width: 1rem;
+  height: 1rem;
+  margin-right: 0.3rem;
+  margin-left: 3em;
+  border-radius: 50%;
+  border-style: solid;
+  border-width: 0.1rem;
+  border-color: gray;
+}
+label > input[type="radio"]:checked + * {
+  color: var(--c4);
+}
+label > input[type="radio"]:checked + *::before {
+  background: radial-gradient(
+    var(--c3) 0%,
+    var(--c3) 40%,
+    transparent 50%,
+    transparent
+  );
+  border-color: var(--c4);
+}
+
+/* basic layout */
+/* fieldset {
+  margin: 4em 4em 4em 25em;
+} */
+
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*
   #radios label {
     cursor: pointer;
     position: relative;
