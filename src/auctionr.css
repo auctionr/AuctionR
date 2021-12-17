@@ -1,6 +1,6 @@
 :root {
   --c1: #000000;
-  --c2: #e6b31e;
+  --c2: #e6b41ecc;
   --c3: #cacaca;
   --c4: #eae3b5;
 
@@ -139,4 +139,40 @@ fa-angle-double-down {
   justify-content: space-between;
   font-size: medium;
   font-weight: 400;
+}
+
+.tabs{
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: medium;
+  font-family: var(--f2);
+  font-weight: 600;
+  width: 500px;
+  color: var(--c2);
+}
+
+.tab{
+  padding: .5rem 1rem .3rem 1rem;
+  border-radius: .5rem;
+  border: 2px solid var(--c2);
+  height: max-content;
+  cursor: pointer;
+}
+
+.tab:hover{
+  background-color: var(--c2);
+  color: var(--c1);
+  transition: all 0.3s 0s ease;
+  
+}
+
+.content{
+  width: 100%;
+  min-height: 60vh;
+  border: 2px solid var(--c2);
+  border-radius: .5rem;
+  padding: 1rem;
 }
