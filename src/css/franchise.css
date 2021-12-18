@@ -1,0 +1,128 @@
+:root {
+  --c1: #000000;
+  --c2: #e6b41ecc;
+  --c3: #cacaca;
+  --c4: #eae3b5;
+
+  --f1: "Catamaran", sans-serif;
+  --f2: "Montserrat Alternates", sans-serif;
+  --f3: "Martel Sans", sans-serif;
+}
+
+.dash-nav-fran-prof{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  color: var(--c3);
+  flex-direction: row;
+}
+
+
+.dash-main{
+  display: flex;
+}
+
+.dash-data{
+  display: flex;
+  flex-direction: column;
+  width: 100%
+}
+
+.dash-fran-prof{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  width: 30vw;
+  margin: 3rem 0 0 5rem;
+  border:2px solid var(--c3);
+  border-radius: 10px;
+  padding: 1rem;
+  height: fit-content;
+  color: var(--c3);
+}
+
+.event-data{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 20px;
+
+  border: 2px solid var(--c3);
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.my-events{
+  margin: 2rem 1rem 1rem 1rem;
+}
+
+.other-events{
+  margin: 1rem 1rem 3rem 1rem;
+}
+
+.event-divider{
+  width: 90%;
+  margin: 1rem 2rem;
+  border-bottom: 1px solid var(--c3);
+}
+
+.event-card{
+  width: 100%;
+}
+
+.join-event-card{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3rem 0 0;
+}
+
+.event-card-title{
+  font-family: var(--f2);
+  font-size: 1.5rem;
+  color: var(--c3);
+  font-weight: 500;
+}
+
+.event-card-date{
+  font-family: var(--f2);
+  font-size: .7rem;
+  color: var(--c3);
+}
+
+.event-join-btn{
+  background-color: var(--c4);
+  border: none;
+  color: var(--c1);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.fran-prof-info{
+  color: var(--c2);
+  font-family: var(--f2);
+  font-size: .9rem;
+  margin-top: 1rem;
+}
+
+.fran-prof-name, .fran-prof-budget{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--c3);
+}
+
+.fran-prof-desc{
+  font-size: .9rem;
+  color: var(--c3);
+  text-align: center;
+}
