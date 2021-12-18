@@ -27,7 +27,6 @@
     <link rel="stylesheet" href="./css/moderators.css" />
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
-    
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
     ></script>
@@ -35,55 +34,80 @@
     <!-- ------------------------------------------------------------- -->
     <!-- Custom -->
     <title>AuctionR | Managers</title>
-   
+
     <!-- ------------------------------------------------------------- -->
   </head>
   <body>
     <div class="container">
       <div class="dash-nav">
-        <a href="index.html"><img
-           src="../public/Logo2.png"
-           height="80px"
-           width="auto"
-           alt="AuctionR"
-         /></a> 
-       </div>
-       <h1 class="about-title">Sport Manager</h1>
-       <div class="mod">
-       <h2>Player requests:</h2>
-           
-  <table class="table table-dark table-hover" >
- <thead>
-   <th> Sport : Cricket </th>
-   <th style="text-align: right;"> Manager : Mr XYZ </th>
- </thead>
-   
-  </table>
-</div>
-<ul>
-  
-  <li> <a href="modconfirm.html"> Player Name : John Doe</a><span class="close">&times;</span></li>
+        <a href="index.html"
+          ><img
+            src="../public/Logo2.png"
+            height="80px"
+            width="auto"
+            alt="AuctionR"
+        /></a>
+        <div class="dash-info">Sport Manager</div>
+      </div>
+      <div class="mod">
+        <div class="table-top">
+          <h2 class="player-req">Player requests:</h2>
+          <a href="events.html"><button class="add-event">Add event</button></a>
+        </div>
 
-  <li> <a href="modconfirm.html">Player Name :Mary Mathew</a><span class="close">&times;</span></li>
-  <li> <a href="modconfirm.html">Player Name :July Young</a><span class="close">&times;</span></li>
+        <table class="table table-dark table-hover">
+          <thead>
+            <th>Sport : Cricket</th>
+            <th style="text-align: right">Manager : Mr XYZ</th>
+          </thead>
+        </table>
+      </div>
+      <ul>
+        <li>
+          <a href="modconfirm.html"> Player Name : John Doe</a
+          ><span class="close">&times;</span>
+        </li>
 
-  <li> <a href="modconfirm.html">Player Name :Bumrah</a><span class="close">&times;</span></li>
-  <li> <a href="modconfirm.html">Player Name :Antonie Issac</a><span class="close">&times;</span></li>
-  <li> <a href="modconfirm.html">Player Name :XYZ</a><span class="close">&times;</span></li>
-  <li> <a href="modconfirm.html">Player Name :ABC</a><span class="close">&times;</span></li>
-  <li> <a href="modconfirm.html">Player Name :Cindy Alen</a><span class="close">&times;</span></li>
-</ul>
+        <li>
+          <a href="modconfirm.html">Player Name :Mary Mathew</a
+          ><span class="close">&times;</span>
+        </li>
+        <li>
+          <a href="modconfirm.html">Player Name :July Young</a
+          ><span class="close">&times;</span>
+        </li>
+
+        <li>
+          <a href="modconfirm.html">Player Name :Bumrah</a
+          ><span class="close">&times;</span>
+        </li>
+        <li>
+          <a href="modconfirm.html">Player Name :Antonie Issac</a
+          ><span class="close">&times;</span>
+        </li>
+        <li>
+          <a href="modconfirm.html">Player Name :XYZ</a
+          ><span class="close">&times;</span>
+        </li>
+        <li>
+          <a href="modconfirm.html">Player Name :ABC</a
+          ><span class="close">&times;</span>
+        </li>
+        <li>
+          <a href="modconfirm.html">Player Name :Cindy Alen</a
+          ><span class="close">&times;</span>
+        </li>
+      </ul>
     </div>
     <script>
       var closebtns = document.getElementsByClassName("close");
       var i;
-      
+
       for (i = 0; i < closebtns.length; i++) {
-        closebtns[i].addEventListener("click", function() {
-          this.parentElement.style.display = 'none';
+        closebtns[i].addEventListener("click", function () {
+          this.parentElement.style.display = "none";
         });
       }
-      </script>
-      
+    </script>
   </body>
 </html>

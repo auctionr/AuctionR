@@ -5,6 +5,40 @@ ul {
   margin: 0;
 }
 
+.dash-nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.player-req{
+  color: var(--c2);
+}
+
+.table-top{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.add-event{
+  background-color: var(--c2);
+  color: var(--c1);
+  font-weight: 800;
+  border-radius: 1rem;
+  padding: .5rem 1rem;
+}
+
+.dash-info{
+  color: var(--c3);
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+
 /* Style the list items */
 ul li {
   border: 1px solid rgb(61, 58, 58);
