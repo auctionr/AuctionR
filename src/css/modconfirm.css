@@ -1,0 +1,39 @@
+:root {
+  --c1: #000000;
+  --c2: #e6b41ecc;
+  --c3: #cacaca;
+  --c4: #eae3b5;
+
+  --f1: "Catamaran", sans-serif;
+  --f2: "Montserrat Alternates", sans-serif;
+  --f3: "Martel Sans", sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0.5rem 0 0.5rem 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--c1);
+  font-family: var(--f3);
+  color: var(--c4);
+}
+
+a {
+  color: var(--c4);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--c4);
+}
+
+.dash-nav-prof{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
