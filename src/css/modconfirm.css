@@ -137,7 +137,7 @@ a:hover {
 
 .mod-submit{
   background: var(--c2);
-  color: var(--c3);
+  color: var(--c1);
   border-radius: 1rem;
   padding: 0.5rem 1rem;
 }

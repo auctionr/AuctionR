@@ -86,7 +86,7 @@
 
 .event-card-title{
   font-family: var(--f2);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: var(--c3);
   font-weight: 500;
 }
@@ -98,14 +98,18 @@
 }
 
 .event-join-btn{
-  background-color: var(--c4);
-  border: none;
-  color: var(--c1);
+  background:transparent;
+  border: 2px solid var(--c3);
+  color: var(--c3);
   padding: 0.5rem 1rem;
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+}
+.event-join-btn:hover{
+  background: var(--c3);
+  color: var(--c1);
 }
 
 .fran-prof-info{
