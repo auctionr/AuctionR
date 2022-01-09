@@ -1,4 +1,3 @@
 # AuctionR
-due monday
-I'm changing something
-NEW MESSAGE
+
+commit test 1
