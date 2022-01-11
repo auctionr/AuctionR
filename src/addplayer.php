@@ -39,7 +39,7 @@
  
   // Perform query
   //person table (first, last name), ParameterPlayer(parameters), PlayerData()
-  $sql = "SELECT P.FirstName,P.LastName,A.PGender,A.PNationality,A.Username,A.PlayerID,A.Price from Person P, PlayerData A where P.Username=A.Username ";
+  $sql = "SELECT P.FirstName,P.LastName,A.PGender,A.PNationality,A.Username,A.PlayerID,A.Price,B.Value from Person P, PlayerData A , ParameterPlayer B where P.Username=A.Username and B.PlayerID=A.PlayerID and B.ParameterID like '_00'";
   
 ?>
 
@@ -121,7 +121,7 @@
             <td><?php echo $rows['PGender'];?></td>
             <td><?php echo $rows['PNationality'];?></td>
             
-            <td>70</td>
+            <td><?php echo $rows['Value'];?></td>
          
             <td><?php echo $rows['Price'];?></td>
             <td><a href="franchiseconfirmation.html"> <button class="table-btn">Add</button></a></td>
