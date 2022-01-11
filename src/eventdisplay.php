@@ -37,6 +37,22 @@
     <!-- ------------------------------------------------------------- -->
   </head>
   <body>
+    <?php 
+    $db = mysqli_connect('localhost', 'root', '','auctionr');
+    if (mysqli_connect_error()) {
+      echo "Failed to connect to MySQL: " . $mysqli_connect_error;
+      exit();
+    }
+    $eid = $_GET['eid'];
+    $sql = "SELECT * FROM Event WHERE EventID = '$eid'";
+    $eventdataresult = mysqli_query($db, $sql);
+    ?>
+
+    <?php 
+    if($eventdataresult){
+      while($edata = mysqli_fetch_assoc($eventdataresult)){
+    ?>
+    
     <div class="container">
       <div class="event-display-nav">
         <img
@@ -52,7 +68,7 @@
         <div class="event-box">
           <div class="event-box-sub">
             <div class="event-display-info">Event Name:</div>
-            <div class="event-display-data">Lorem, ipsum dolor.</div>
+            <div class="event-display-data"><?php echo $edata["EName"] ?></div>
             <div class="event-display-info">Sport:</div>
             <div class="event-display-data">Cricket</div>
             <div class="event-display-info">Event Start:</div>
@@ -78,5 +94,10 @@
         <button class="event-join">Join Event</button>
       </div>
     </div>
+
+    <?php
+     }
+    }
+    ?>
   </body>
 </html>

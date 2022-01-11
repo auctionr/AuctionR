@@ -37,6 +37,68 @@
     <!-- ------------------------------------------------------------- -->
   </head>
   <body>
+    <?php 
+    $db = mysqli_connect('localhost', 'root', '','auctionr');
+    if (mysqli_connect_error()) {
+      echo "Failed to connect to MySQL: " . $mysqli_connect_error;
+      exit();
+    }
+
+    $pid = $_GET['pid'];
+    $sql = "SELECT * FROM PlayerData WHERE PlayerID = '$pid'";
+    $playerdataresult = mysqli_query($db, $sql);
+
+
+
+    if($_SERVER["REQUEST_METHOD"] == "POST") {
+      // username and password sent from form 
+      $myusername = $_POST['uname'];
+      $mypassword = $_POST['pwd'];
+      $radioVal = $_POST["radio-button"];
+
+      //TODO: Add mode checking
+      
+      // echo "<script>alert('$myusername');</script>";
+      // echo "<script>alert('$mypassword');</script>";
+      // echo "<script>alert('$radioVal');</script>";
+      
+      $count = 0;
+
+      $sql = "SELECT * FROM Login WHERE username = '$myusername' and password = '$mypassword'";
+      $result=mysqli_query($db,$sql);
+      
+      if ($result){
+        // Return the number of rows in result set
+        $rowcount=mysqli_num_rows($result);
+        $count = $rowcount;
+        mysqli_free_result($result);
+      }
+		
+      if($count == 1) {
+         $_SESSION['username'] = $myusername;
+         $_SESSION['usertype'] = $radioVal;
+         if($radioVal == "Player"){
+          header("Location: playerdashboard.html");
+         }
+         else if($radioVal == "Franchise"){
+          header("Location: franchisedashboard.html");
+         }
+         else if($radioVal == "SportManager"){
+          header("Location: moderators.php");
+         }
+      }else {
+         $error = "Your Login Name or Password is invalid";
+         echo '<script>alert("Login fail, invalid credentials")</script>';
+      }
+   }
+    ?>
+
+    <?php 
+      if($playerdataresult){
+        while($pdata = mysqli_fetch_assoc($playerdataresult)){
+    ?>
+
+    
     <div class="container">
       <div class="dash-nav-prof">
         <img
@@ -54,14 +116,14 @@
           <div class="mod-data-box-sub">
             <div class="mod-data-info">Name:</div>
             <div class="mod-data-data">
-              <b>Lorem, ipsum.</b>
+              <b><?php echo $pdata['Username'] ?></b>
             </div>
             <div class="mod-data-info">Sport:</div>
-            <div class="mod-data-data">Lorem</div>
+            <div class="mod-data-data"><?php echo $pdata['Username'] ?></div>
             <div class="mod-data-info">Date Of Birth:</div>
-            <div class="mod-data-data">1/1/2001</div>
+            <div class="mod-data-data"><?php echo $pdata['DOB'] ?></div>
             <div class="mod-data-info">Gender:</div>
-            <div class="mod-data-data">Male</div>
+            <div class="mod-data-data"><?php echo $pdata['PGender'] ?></div>
           </div>
           <div class="mod-data-box-sub">
             <div class="mod-data-info">Description:</div>
@@ -70,11 +132,11 @@
               Distinctio, quidem.
             </div>
             <div class="mod-data-info">Player ID:</div>
-            <div class="mod-data-data">CR#45031</div>
+            <div class="mod-data-data"><?php echo $pdata['PlayerID'] ?></div>
             <div class="mod-data-info">Expected Price:</div>
-            <div class="mod-data-data">100000</div>
+            <div class="mod-data-data"><?php echo $pdata['Price'] ?></div>
             <div class="mod-data-info">Nationality</div>
-            <div class="mod-data-data">Indian</div>
+            <div class="mod-data-data"><?php echo $pdata['PNationality'] ?></div>
           </div>
         </div>
       </div>
@@ -92,7 +154,7 @@
             </div>
             <div class="mod-player-form-field">
               <label for="price" class="form-label">Price: </label>
-              <input type="number" name="rating" id="rating" class="form-box"/>
+              <input type="number" name="price" id="price" class="form-box"/>
             </div>
           </div>
           <h2>Stats:</h2>
@@ -122,6 +184,11 @@
         </form>
       </div>
     </div>
+
+    <?php
+        }
+      }
+    ?>
     </div>
   </body>
 </html>
