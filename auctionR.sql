@@ -25,6 +25,8 @@ create table Event (EventID varchar(10) primary key,
                     EGender varchar(11) not null, 
                     ENationality varchar(20) not null, 
                     SportsID varchar(5) not null, 
+                    EventStart date not null,
+                    EventEnd date not null,
                     foreign key(SportsID) references Sports(SportsID));
 
 create table FranchiseEvent (FranchiseID varchar(10),  
@@ -155,16 +157,16 @@ insert into Sports values('SP108', 'Polo',6);
 insert into Sports values('SP109', 'Badminton',4);
 insert into Sports values('SP110', 'Tennis',4);
 
-insert into Event values('EV101', 'TNPL', 2, 12,'Male', 'India','SP101');
-insert into Event values('EV102', 'IPL', 3, 12,'Male','India','SP101');
-insert into Event values('EV103', 'BharatIPL', 1, 12,'Female','India','SP101');
-insert into Event values('EV104', 'JapanBB', 1, 7,'Male','Japan','SP102');
-insert into Event values('EV105', 'TeleEvent', 2, 8,'Female','London','SP102');
-insert into Event values('EV106', 'ScoreZone', 1, 8, 'Male','Canada','SP101');
-insert into Event values('EV107', 'CricketMoj', 5, 12, 'Male','India','SP101');
-insert into Event values('EV108', 'VVC BBall', 3, 11, 'Female','London','SP102');
-insert into Event values('EV109', 'Nano Cricket', 1, 12, 'Male','Germany','SP101');
-insert into Event values('EV110', 'Global BBall', 2, 8, 'Male','India','SP102');
+insert into Event values('EV101', 'TNPL', 2, 12,'Male', 'India','SP101', '2022-04-03', '2022-04-21');
+insert into Event values('EV102', 'IPL', 3, 12,'Male','India','SP101','2022-05-03', '2022-05-21');
+insert into Event values('EV103', 'BharatIPL', 1, 12,'Female','India','SP101','2022-06-03', '2022-06-21');
+insert into Event values('EV104', 'JapanBB', 1, 7,'Male','Japan','SP102','2022-07-03', '2022-07-21');
+insert into Event values('EV105', 'TeleEvent', 2, 8,'Female','London','SP102','2022-08-03', '2022-08-21');
+insert into Event values('EV106', 'ScoreZone', 1, 8, 'Male','Canada','SP101','2022-09-03', '2022-09-21');
+insert into Event values('EV107', 'CricketMoj', 5, 12, 'Male','India','SP101','2022-10-03', '2022-10-21');
+insert into Event values('EV108', 'VVC BBall', 3, 11, 'Female','London','SP102','2022-11-03', '2022-11-21');
+insert into Event values('EV109', 'Nano Cricket', 1, 12, 'Male','Germany','SP101','2022-12-03', '2022-12-21');
+insert into Event values('EV110', 'Global BBall', 2, 8, 'Male','India','SP102','2022-04-05', '2022-04-27');
 
 insert into FranchiseEvent values('FR102','EV101');
 insert into FranchiseEvent values('FR106','EV101');
