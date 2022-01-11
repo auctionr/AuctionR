@@ -144,24 +144,24 @@
           </div>
           <h2>Stats:</h2>
           <div class="mod-data-box-stats">
-            <div class="mod-player-form-field">
+          <!-- <div class="mod-player-form-field">
               <label for="validId" class="form-label">Grade</label>
               <select name="grade" id="grade" class="form-box">
                 <option value="A">A</option>
                 <option value="A">B</option>
                 <option value="A">C</option>
               </select>
-            </div>
+            </div> -->
             <div class="mod-player-form-field">
-              <label for="validId" class="form-label">Batting</label>
+              <label for="validId" class="form-label">Handling</label>
               <input type="number" name="rating" id="rating" class="form-box"/>
             </div>
             <div class="mod-player-form-field">
-              <label for="validId" class="form-label">Bowling</label>
+              <label for="validId" class="form-label">Defense</label>
               <input type="number" name="rating" id="rating" class="form-box"/>
             </div>
             <div class="mod-player-form-field">
-              <label for="validId" class="form-label">Fielding</label>
+              <label for="validId" class="form-label">Shooting</label>
               <input type="number" name="rating" id="rating" class="form-box"/>
             </div>
           </div>
