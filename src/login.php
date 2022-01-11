@@ -6,7 +6,6 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <!-- ------------------------------------------------------------- -->
   <!-- Base -->
 
@@ -43,65 +42,46 @@
      echo "Failed to connect to MySQL: " . $mysqli_connect_error;
      exit();
    }
-   session_start();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
-      $myusername = mysqli_real_escape_string($db,$_POST['uname']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['pwd']); 
-      echo '<script>alert('.$myusername.')</script>';
+      $myusername = $_POST['uname'];
+      $mypassword = $_POST['pwd'];
+      $radioVal = $_POST["radio-button"];
+
+      //TODO: Add mode checking
+      
+      // echo "<script>alert('$myusername');</script>";
+      // echo "<script>alert('$mypassword');</script>";
+      // echo "<script>alert('$radioVal');</script>";
       
       $count = 0;
 
-      $radioVal = $_POST["radio-button"];
-
-      $sql = "SELECT id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
-      $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
+      $sql = "SELECT * FROM Login WHERE username = '$myusername' and password = '$mypassword'";
+      $result=mysqli_query($db,$sql);
       
-      $count = mysqli_num_rows($result);
-
-    //   if($radioVal == "Player"){
-    //   $sql = "SELEC$sql = "SELECT id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
-    //   $result = mysqli_query($db,$sql);
-    //   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    //   $active = $row['active'];
-      
-    //   $count = mysqli_num_rows($result);T id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
-    //   $result = mysqli_query($db,$sql);
-    //   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    //   $active = $row['active'];
-      
-    //   $count = mysqli_num_rows($result);
-    // }
-    // if($radioVal == "Franchise"){
-    //   $sql = "SELECT id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
-    //   $result = mysqli_query($db,$sql);
-    //   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    //   $active = $row['active'];
-      
-    //   $count = mysqli_num_rows($result);
-    // }
-    // if($radioVal == "SportManager"){
-    //   $sql = "SELECT id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
-    //   $result = mysqli_query($db,$sql);
-    //   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-    //   $active = $row['active'];
-      
-    //   $count = mysqli_num_rows($result);
-    // }
-      
-      // If result matched $myusername and $mypassword, table row must be 1 row
+      if ($result){
+        // Return the number of rows in result set
+        $rowcount=mysqli_num_rows($result);
+        $count = $rowcount;
+        mysqli_free_result($result);
+      }
 		
       if($count == 1) {
-         session_register("myusername");
-         $_SESSION['login_user'] = $myusername;
-         $_SESSION['type'] = $radioVal;
-         echo '<script>alert("Login success")</script>';
+         $_SESSION['username'] = $myusername;
+         $_SESSION['usertype'] = $radioVal;
+         if($radioVal == "Player"){
+          header("Location: playerdashboard.html");
+         }
+         else if($radioVal == "Franchise"){
+          header("Location: franchisedashboard.html");
+         }
+         else if($radioVal == "SportManager"){
+          header("Location: moderators.php");
+         }
       }else {
          $error = "Your Login Name or Password is invalid";
-         echo '<script>alert("Login fail")</script>';
+         echo '<script>alert("Login fail, invalid credentials")</script>';
       }
    }
 ?>
@@ -110,7 +90,7 @@
         <input class="pass" id="pwd" name="pwd" type="password" placeholder="Password">
         <fieldset class="login-choice">
           <label class="l-choice">
-            <input type="radio" name="radio-button" value="css" checked value="Player" />
+            <input type="radio" name="radio-button" value="Player" checked value="Player" />
             <span style="padding-right:3rem;">Player</span>
           </label>
           <label>
@@ -118,7 +98,7 @@
             <span style="padding-right:3rem;">Franchise</span>
           </label>
           <label>
-            <input type="radio" name="radio-button" value="Manager" />
+            <input type="radio" name="radio-button" value="SportManager" />
             <span style="padding-right:3rem;">Manager</span>
           </label>
           

@@ -47,8 +47,8 @@
    
     // Perform query
     //person table (first, last name), ParameterPlayer(parameters), PlayerData()
-    $sql = "SELECT P.FirstName,P.LastName from Person P PlayerData D where P.Username = D.Username and D.verified='no' ";
-    
+   $sql = "SELECT P.FirstName,P.LastName from Person P inner join PlayerData D where D.verified='no'and P.Username = D.Username";
+   
   ?>
     <div class="container">
       <div class="dash-nav">
@@ -69,60 +69,50 @@
 
         <table class="table table-dark table-hover">
           <thead>
-            <th>Sport : Cricket</th>
-            <th style="text-align: right">Manager : Mr XYZ</th>
-          </thead>
-        </table>
-      </div>
-      <?php
+          <?php
+         // Perform query
+    //person table (first, last name), ParameterPlayer(parameters), PlayerData()
+   $sql = "SELECT FirstName,LastName from Person P where Username='milliebbrown'"; 
+  // $sql = "SELECT S.SName, A.FirstName, A.LastName from (select P.FirstName, P.LastName from Person P, Manager M where P.Username ='milliebbrown') A Manager M Sports S where S.SportsID = M.SportsID)";
+  
    if ($result = $mysqli -> query($sql)) {
     while ($rows=mysqli_fetch_assoc($result)) {
-
-   
   ?>
-      <ul>
-        <li>
-          <a href="modconfirm.html"> Player Name : John Doe</a
-          ><span class="close">&times;</span>
-        </li>
-  
-        <li>
-          <a href="modconfirm.html">Player Name :Mary Mathew</a
-          ><span class="close">&times;</span>
-        </li>
-        <li>
-          <a href="modconfirm.html">Player Name :July Young</a
-          ><span class="close">&times;</span>
-        </li>
-
-        <li>
-          <a href="modconfirm.html">Player Name :Bumrah</a
-          ><span class="close">&times;</span>
-        </li>
-        <li>
-          <a href="modconfirm.html">Player Name :Antonie Issac</a
-          ><span class="close">&times;</span>
-        </li>
-        <li>
-          <a href="modconfirm.html">Player Name :XYZ</a
-          ><span class="close">&times;</span>
-        </li>
-        <li>
-          <a href="modconfirm.html">Player Name :ABC</a
-          ><span class="close">&times;</span>
-        </li>
-        <li>
-          <a href="modconfirm.html">Player Name :Cindy Alen</a
-          ><span class="close">&times;</span>
-        </li>
-                  <?php
+            
+            <th >Manager : <?php echo $rows['FirstName'];echo str_repeat('&nbsp;', 2);echo $rows['LastName'];?></th>
+            
+          </thead>
+          <?php 
     }
     $result->free_result();
         }
-  $mysqli -> close();
+
   ?>
-      </ul>
-    </div>
+       
+  </table>
+        <?php
+         // Perform query
+    //person table (first, last name), ParameterPlayer(parameters), PlayerData()
+   $sql = "SELECT P.FirstName,P.LastName,D.PlayerID from Person P inner join PlayerData D where D.verified='no'and P.Username = D.Username";
+   if ($result = $mysqli -> query($sql)) {
+    while ($rows=mysqli_fetch_assoc($result)) {
+  ?>
+        
+         <ul>
+          <li>
+          <?php echo "<a href='modconfirm.php?pid=".$rows['PlayerID']."'>".$rows['FirstName']." ".$rows['LastName']."</a>";
+        ?><span class="close">&times;</span>
+        </li>
+    </ul>
+          <?php 
+    }
+    $result->free_result();
+        }
+
+  ?>
+  </div>
+ 
+     
     <script>
       var closebtns = document.getElementsByClassName("close");
       var i;
