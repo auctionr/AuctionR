@@ -5,55 +5,55 @@ create table Login (Username varchar(20) primary key,
 create table Person (Username varchar(20) primary key,  
                     FirstName varchar(15) not null,  
                     LastName varchar(15)  not null, 
-                    foreign key(Username) references Login);   
+                    foreign key(Username) references Login(Username));   
            
 create table FranchiseData (FranchiseID varchar(10) primary key,  
                     FName varchar(20) not null,  
                     Username varchar(20) unique not null,  
-                    Credit numeric(3),
-                    foreign key(Username) references Login);
+                    Credit int,
+                    foreign key(Username) references Login(Username));
 
 
 create table Sports (SportsID varchar(5) primary key, 
                     SName varchar(15) not null, 
-                    PlayerLimit integer not null);
+                    PlayerLimit int not null);
 
 create table Event (EventID varchar(10) primary key,  
                     EName varchar(20) not null,  
-                    MaxForiegnPlayers numeric(2) not null, 
-                    MaxHomePlayers numeric(2) not null, 
+                    MaxForiegnPlayers int not null, 
+                    MaxHomePlayers int not null, 
                     EGender varchar(11) not null, 
                     ENationality varchar(20) not null, 
                     SportsID varchar(5) not null, 
-                    foreign key(SportsID) references Sports);
+                    foreign key(SportsID) references Sports(SportsID));
 
 create table FranchiseEvent (FranchiseID varchar(10),  
                              EventID varchar(10),  
                              primary key(FranchiseID, EventID), 
-                             foreign key(FranchiseID) references FranchiseData, 
-                             foreign key(EventID) references Event);
+                             foreign key(FranchiseID) references FranchiseData(FranchiseID), 
+                             foreign key(EventID) references Event(EventID));
 
-create table Admin (AdminID numeric(5),  
+create table Admin (AdminID int,  
                     Username varchar(10) unique not null,  
                     primary key(AdminID), 
-                    foreign key(Username) references Person);
+                    foreign key(Username) references Person(Username));
 
-create table Admin_Phone (AdminID numeric(5),  
-                    Aphone numeric(15) unique not null,  
+create table AdminPhone (AdminID int,  
+                    Aphone bigint unique not null,  
                     primary key(AdminID, Aphone), 
-                    foreign key(AdminID) references Admin);
+                    foreign key(AdminID) references Admin(AdminID));
 
 create table Manager (ManagerID varchar(5), 
                       Username varchar(20) unique not null,  
                       SportsID varchar(5) not null, 
                       primary key(ManagerID), 
-                      foreign key(Username) references Person, 
-                      foreign key(SportsID) references Sports);
+                      foreign key(Username) references Person(Username), 
+                      foreign key(SportsID) references Sports(SportsID));
                       
-create table Manager_Phone (ManagerID varchar(5), 
-                            MPhone numeric(15) unique not null, 
+create table ManagerPhone (ManagerID varchar(5), 
+                            MPhone bigint unique not null, 
                             primary key(ManagerID,MPhone), 
-                            foreign key(ManagerID) references Manager);
+                            foreign key(ManagerID) references Manager(ManagerID));
                             
 create table PlayerData (PlayerID varchar(5)primary key,  
                          Username varchar(20) unique not null,  
@@ -61,32 +61,32 @@ create table PlayerData (PlayerID varchar(5)primary key,
                          FranchiseID varchar(10),  
                          PGender varchar(6) not null,  
                          PNationality varchar(20) not null,  
-                         Price numeric(10) not null,  
+                         Price bigint not null,  
                          DOB date not null,  
-                         foreign key(Username) references Person);
+                         foreign key(Username) references Person(Username));
 
 create table Player_Phone (PlayerID varchar(5), 
-                           PPhone numeric(15), 
+                           PPhone bigint, 
                            primary key(PlayerID,PPhone), 
-                           foreign key(PlayerID) references PlayerData);
+                           foreign key(PlayerID) references PlayerData(PlayerID));
                            
 create table PlayerEvent (PlayerID varchar(5), 
                           EventID varchar(10), 
                           primary key(PlayerID,EventID), 
-                          foreign key(PlayerID) references PlayerData, 
-                          foreign key(EventID) references Event);
+                          foreign key(PlayerID) references PlayerData(PlayerID), 
+                          foreign key(EventID) references Event(EventID));
                           
 create table Parameter (ParameterID varchar(5) primary key, 
                         SportsID varchar(5) not null, 
                         PName varchar(10) not null, 
-                        foreign key(SportsID) references Sports);
+                        foreign key(SportsID) references Sports(SportsID));
                         
 create table ParameterPlayer(ParameterID varchar(5), 
                             PlayerID varchar(5), 
                             Value varchar(10) not null, 
                             primary key(ParameterID, PlayerID), 
-                            foreign key(ParameterID) references Parameter, 
-                            foreign key(PlayerID) references PlayerData);
+                            foreign key(ParameterID) references Parameter(ParameterID), 
+                            foreign key(PlayerID) references PlayerData(PlayerID));
 
 insert into login values('msd7', 'dhoni7', 'contact@dhoni.com');
 insert into login values('vk18', 'anushkasharma', 'contact@one8.com');
@@ -209,25 +209,24 @@ insert into Admin values(10008,'Bheem');
 insert into Admin values(10009,'Spiderman');
 insert into Admin values(10010,'itsChan');
 
-insert into Admin_Phone values(10003,9638464468);
-insert into Admin_Phone values(10007,2231186323);
-insert into Admin_Phone values(10005,1254249403);
-insert into Admin_Phone values(10009,2654455971);
-insert into Admin_Phone values(10006,7219261375);
-insert into Admin_Phone values(10010,1651113036);
-insert into Admin_Phone values(10007,1408121241);
-insert into Admin_Phone values(10002,8006620150);
-insert into Admin_Phone values(10001,1244726959);
-insert into Admin_Phone values(10002,9226303864);
-insert into Admin_Phone values(10002,0446690156);
-insert into Admin_Phone values(10009,9285223982);
-insert into Admin_Phone values(10001,1389622479);
-insert into Admin_Phone values(10004,1603958939);
-insert into Admin_Phone values(10009,1314496402);
-insert into Admin_Phone values(10003,2090362769);
-insert into Admin_Phone values(10001,7407243149);
-insert into Admin_Phone values(10008,9747676239);
-insert into Admin_Phone values(10003,5406193165);
+insert into AdminPhone values(10003,9638464468);
+insert into AdminPhone values(10005,1254249403);
+insert into AdminPhone values(10009,2654455971);
+insert into AdminPhone values(10006,7219261375);
+insert into AdminPhone values(10010,1651113036);
+insert into AdminPhone values(10007,1408121241);
+insert into AdminPhone values(10002,8006620150);
+insert into AdminPhone values(10001,1244726959);
+insert into AdminPhone values(10002,9226303864);
+insert into AdminPhone values(10002,0446690156);
+insert into AdminPhone values(10009,9285223982);
+insert into AdminPhone values(10001,1389622479);
+insert into AdminPhone values(10004,1603958939);
+insert into AdminPhone values(10009,1314496402);
+insert into AdminPhone values(10003,2090362769);
+insert into AdminPhone values(10001,7407243149);
+insert into AdminPhone values(10008,9747676239);
+insert into AdminPhone values(10003,5406193165);
 
 insert into Login values('spalder23','auctionr','spalder23@gmail.com');
 insert into Login values('fareekh','auctionr1','fareekh@gmail.com');
@@ -240,16 +239,16 @@ insert into Login values('senpai','auctionr7','jjk@gmail.com');
 insert into Login values('ligma','auctionr9','braalze@gmail.com');
 insert into Login values('sukuna','reportafk','leoasf@gmail.com');
 
-insert into person values('spalder23','Spalder','Suresh');
-insert into person values('fareekh','Fareekh','Khan');
-insert into person values('ricardo','Ricardo','Alonso');
-insert into person values('samsupremacy','Samantha','Sama');
-insert into person values('chemams','Crayon','Lord');
-insert into person values('milliebbrown','Bobby','Brown');
-insert into person values('onisan','Udhay','Kumar');
-insert into person values('senpai','Sakura','Uchiha');
-insert into person values('ligma','Tyler','Bryce');
-insert into person values('sukuna', 'Gojo', 'Satoru');
+insert into Person values('spalder23','Spalder','Suresh');
+insert into Person values('fareekh','Fareekh','Khan');
+insert into Person values('ricardo','Ricardo','Alonso');
+insert into Person values('samsupremacy','Samantha','Sama');
+insert into Person values('chemams','Crayon','Lord');
+insert into Person values('milliebbrown','Bobby','Brown');
+insert into Person values('onisan','Udhay','Kumar');
+insert into Person values('senpai','Sakura','Uchiha');
+insert into Person values('ligma','Tyler','Bryce');
+insert into Person values('sukuna', 'Gojo', 'Satoru');
 
 insert into manager values('B100','spalder23', 'SP102');
 insert into manager values('B101','fareekh', 'SP102');
@@ -262,18 +261,18 @@ insert into manager values('C102','senpai', 'SP101');
 insert into manager values('C103','sukuna', 'SP101');
 insert into manager values('C104','ligma', 'SP101');
 
-insert into manager_phone values('B100',7965123578);
-insert into manager_phone values('B100',7995123578);
-insert into manager_phone values('B101',7965123586);
-insert into manager_phone values('B102',7526523336);
-insert into manager_phone values('B103',7965123537);
-insert into manager_phone values('B104',7965123574);
-insert into manager_phone values('C100',04212207877);
-insert into manager_phone values('C100',7965178854);
-insert into manager_phone values('C101',7965127815);
-insert into manager_phone values('C102',9856284851);
-insert into manager_phone values('C103',9856284545);
-insert into manager_phone values('C104',9857445578);
+insert into managerphone values('B100',7965123578);
+insert into managerphone values('B100',7995123578);
+insert into managerphone values('B101',7965123586);
+insert into managerphone values('B102',7526523336);
+insert into managerphone values('B103',7965123537);
+insert into managerphone values('B104',7965123574);
+insert into managerphone values('C100',04212207877);
+insert into managerphone values('C100',7965178854);
+insert into managerphone values('C101',7965127815);
+insert into managerphone values('C102',9856284851);
+insert into managerphone values('C103',9856284545);
+insert into managerphone values('C104',9857445578);
 
 insert into parameter values('C01','SP101', 'Batting');
 insert into parameter values('C02','SP101', 'Bowling');
