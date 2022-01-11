@@ -1,3 +1,4 @@
+<?php include('server.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,14 +50,12 @@
         /></a> 
       </div>
       <h1 class="about-title">Player Registeration</h1>
-     
-    <section class="vh-100 register">
+      <form method="post" action="playerregister.php"> 
+        <?php include("errors.php"); ?>
+      <section class="vh-100 register">
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-9">
-      
-             
-      
               <div class="card" style="border-radius: 0px;">
                 <div class="card-body ">
       
@@ -67,20 +66,16 @@
       
                     </div>
                     <div class="col-md-9 pe-5">
-      
-                      <input type="text" class="form-control form-control-lg" />
-      
+                      <input type="text" class="form-control form-control-lg" name="firstname" value="<?php echo $firstname; ?>"/>
                     </div>
                   </div>
                   <div class="row align-items-center pt-4 pb-3 ">
                     <div class="col-md-3 ps-5">
-      
                       <h6 class="mb-0 ">Last name</h6>
-      
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
+                      <input type="text" class="form-control form-control-lg" name="lastname" value="<?php echo $lastname; ?>"/>
       
                     </div>
                   </div>
@@ -95,22 +90,11 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="email" class="form-control form-control-lg" />
+                      <input type="email" class="form-control form-control-lg" name="email" value="<?php echo $email; ?>"/>
       
                     </div>
                   </div>
-                  <div class="row align-items-center py-3">
-                    <div class="col-md-3 ps-5">
-      
-                      <h6 class="mb-0">Phone Number</h6>
-      
-                    </div>
-                    <div class="col-md-9 pe-5">
-      
-                      <input type="tel" class="form-control form-control-lg"  />
-      
-                    </div>
-                  </div>
+                  
       
                   <hr class="mx-n3">
                   <div class="row align-items-center py-3">
@@ -121,10 +105,22 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="date" class="form-control form-control-lg" />
+                      <input type="text" class="form-control form-control-lg" placeholder="yy-mm-dd" name="DOB" value="<?php echo $DOB; ?>" />
       
                     </div>
                   </div>
+
+                  <div class="row align-items-center py-3">
+                    <div class="col-md-3 ps-5">
+      
+                      <h6 class="mb-0">Gender</h6>
+      
+                    </div>
+                    <div class="col-md-9 pe-5">
+      
+                      <input type="tel" class="form-control form-control-lg"  placeholder="M or F" name="gender" value="<?php echo $gender; ?>" />
+      
+                    </div>
                   <div class="row align-items-center py-3">
                     <div class="col-md-3 ps-5">
       
@@ -133,7 +129,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
+                      <input type="text" class="form-control form-control-lg" name="nationality" value="<?php echo $nationality; ?>" />
       
                     </div>
                   </div>
@@ -146,7 +142,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg"  />
+                      <input type="text" class="form-control form-control-lg" name="sport" value="<?php echo $sport; ?>" />
       
                     </div>
                   </div>
@@ -158,8 +154,8 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg"  />
-      
+                      <input type="text" class="form-control form-control-lg" name="playerid" value="<?php echo $playerid; ?> "/>
+
                     </div>
                   </div>
                   <div class="row align-items-center py-3">
@@ -170,7 +166,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
+                      <input type="number" class="form-control form-control-lg" name="price" value="<?php echo $price; ?>"/>
       
                     </div>
                   </div>
@@ -186,7 +182,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
+                      <input type="text" class="form-control form-control-lg" name="username" value="<?php echo $username; ?>" />
       
                     </div>
                   </div>
@@ -199,7 +195,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="password" class="form-control form-control-lg" />
+                      <input type="password" class="form-control form-control-lg" name="password1"/>
       
                     </div>
                   </div>
@@ -211,14 +207,14 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="password" class="form-control form-control-lg" />
+                      <input type="password" class="form-control form-control-lg" name="password2"/>
       
                     </div>
                   </div>
                   <hr class="mx-n3">
       
                   <div class="px-5 py-4">
-                    <a href="login.html" class="submit" align="center">SUBMIT</a>
+                    <button type="submit" class="submit" name="reg_user"><a href="login.php" align="center">SUBMIT</a></button>
                   </div>
       
                 </div>
@@ -228,5 +224,6 @@
           </div>
         </div>
       </section>
+      </form>
       </body>
 </html>

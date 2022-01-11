@@ -1,5 +1,5 @@
 create table Login (Username varchar(20) primary key,   
-                    Password varchar(35) not null,   
+                    Pass varchar(35) not null,   
                     Email varchar(50) unique not null);
 
 create table Person (Username varchar(20) primary key,  
