@@ -50,7 +50,7 @@
         /></a> 
       </div>
       <h1 class="about-title">Player Registeration</h1>
-      <form method="post" action="playerregister.php"> 
+      <form method="POST" action=""> 
         <?php include("errors.php"); ?>
       <section class="vh-100 register">
         <div class="container h-100">

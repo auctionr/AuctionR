@@ -53,9 +53,11 @@ if($user)
 }
 
 if (count($errors) == 0) {
-    $query = "INSERT INTO login (username, email, password) 
-              VALUES('$username', '$email', '$password1')";
-    mysqli_query($db, $query);
-
+     $q1="INSERT INTO login (username, pass, email) VALUES ('$username','$password1','$email')";
+     mysqli_query($db, $q1);
+     $q3="INSERT INTO person (username, firstname, lastname) VALUES ('$username','$firstname','$lastname')";
+     mysqli_query($db, $q3);
+     $q2="INSERT INTO playerdata (playerid, username, sportsid, pgender, pnationality, price, DOB, verified) VALUES ('$playerid','$username','$sport','$gender','$nationality',$price,'$DOB','no')";
+     mysqli_query($db, $q2); 
 }
 }
