@@ -1,3 +1,4 @@
+<?php include('server2.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -49,7 +50,7 @@
         /></a> 
       </div>
       <h1 class="about-title">Franchise Registeration</h1>
-      <form method="POST" action=""> 
+      <form method="POST" action="franchiseregister.php"> 
         <?php include("errors.php"); ?>
     <section class="vh-100 register">
         <div class="container h-100">
@@ -92,12 +93,12 @@
                   <div class="row align-items-center py-3">
                     <div class="col-md-3 ps-5">
       
-                      <h6 class="mb-0">Phone Number</h6>
+                      <h6 class="mb-0">FranchiseID</h6>
       
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="tel" class="form-control form-control-lg"name="phoneno" value="<?php echo $phoneno; ?>"/>
+                      <input type="tel" class="form-control form-control-lg"name="fid" value="<?php echo $fid; ?>"/>
       
                     </div>
                   </div>
@@ -118,7 +119,7 @@
                   <div class="row align-items-center py-3">
                     <div class="col-md-3 ps-5">
       
-                      <h6 class="mb-0">Budget</h6>
+                      <h6 class="mb-0">Credits</h6>
       
                     </div>
                     <div class="col-md-9 pe-5">
@@ -139,8 +140,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
-      
+                      <input type="text" class="form-control form-control-lg" name="username" value="<?php echo $username; ?>"/>
                     </div>
                   </div>
       
@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="password" class="form-control form-control-lg" />
+                      <input type="password" class="form-control form-control-lg" name="password1"/>
       
                     </div>
                   </div>
@@ -164,14 +164,13 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="password" class="form-control form-control-lg" />
+                      <input type="password" class="form-control form-control-lg" name="password2" />
       
                     </div>
                   </div>
                   <hr class="mx-n3">
-      
                   <div class="px-5 py-4">
-                    <a href="login.html" class="submit" align="center">SUBMIT</a>
+                  <button type="submit" class="submit" name="reg_user"><a href="login.php" align="center">SUBMIT</a></button>
                   </div>
       
                 </div>
