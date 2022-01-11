@@ -57,8 +57,6 @@
     $neweventdataresult = mysqli_query($db, $sql);
     ?>
 
-    
-  {% endif %}
     <div class="container"> 
       <div class="dash-nav-fran-prof">
         <img
@@ -71,6 +69,17 @@
       </div>
       <div class="dash-main">
         <div class="dash-data">
+
+          <?php 
+            if($cureventdataresult){
+              while($cdata = mysqli_fetch_assoc($cureventdataresult)){
+          ?>
+
+          <?php
+              }
+            }
+          ?>
+
           <div class="my-events">
             <h2>My Events</h2>
             <div class="event-data">
@@ -96,6 +105,9 @@
               </div>
             </div>
           </div>
+          
+          
+          
           <div class="other-events">
             <h2>Other Events</h2>
             <div class="event-data">
@@ -143,6 +155,9 @@
             </div>
           </div>
         </div>
+
+
+
         <div class="fran-dash-right">
           <div class="dash-fran-prof">
             <div class="prof-img">

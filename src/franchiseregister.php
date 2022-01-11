@@ -49,7 +49,8 @@
         /></a> 
       </div>
       <h1 class="about-title">Franchise Registeration</h1>
-     
+      <form method="POST" action=""> 
+        <?php include("errors.php"); ?>
     <section class="vh-100 register">
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -68,7 +69,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
+                      <input type="text" class="form-control form-control-lg" name="teamname" value="<?php echo $teamname; ?>"/>
       
                     </div>
                   </div>
@@ -84,7 +85,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="email" class="form-control form-control-lg" />
+                      <input type="email" class="form-control form-control-lg"name="email" value="<?php echo $email; ?>"/>
       
                     </div>
                   </div>
@@ -96,7 +97,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="tel" class="form-control form-control-lg"  />
+                      <input type="tel" class="form-control form-control-lg"name="phoneno" value="<?php echo $phoneno; ?>"/>
       
                     </div>
                   </div>
@@ -110,7 +111,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg"  />
+                      <input type="text" class="form-control form-control-lg" name="sport" value="<?php echo $sport; ?>"/>
       
                     </div>
                   </div>
@@ -122,7 +123,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
+                      <input type="text" class="form-control form-control-lg" name="budget" value="<?php echo $budget; ?>"/>
       
                     </div>
                   </div>
