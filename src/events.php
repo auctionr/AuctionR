@@ -1,3 +1,4 @@
+<?php include('server1.php') ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -53,7 +54,8 @@
         <div class="container h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-9">
-      
+              <form method="post" action="events.php">
+                <?php include('errors.php'); ?>
                 <h1 class="about-title">Create Event</h1>
       
               <div class="card" style="border-radius: 0px;">
@@ -67,12 +69,25 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
+                      <input type="text" class="form-control form-control-lg" name="eventname" value="<?php echo $eventname; ?>"/>
+
       
                     </div>
                   </div>
                  
+
+                  <div class="row align-items-center py-3">
+                    <div class="col-md-3 ps-5">
       
+                      <h6 class="mb-0">EventID</h6>
+      
+                    </div>
+                    <div class="col-md-9 pe-5">
+      
+                      <input type="type" class="form-control form-control-lg" name="eventid" value="<?php echo $eventid; ?>"/>
+      
+                    </div>
+                  </div>
                   <hr class="mx-n3">
       
                   <div class="row align-items-center py-3">
@@ -83,7 +98,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="email" class="form-control form-control-lg" />
+                      <input type="type" class="form-control form-control-lg" name="sport" value="<?php echo $sport; ?>"/>
       
                     </div>
                   </div>
@@ -95,7 +110,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg"  />
+                      <input type="text" class="form-control form-control-lg" name="nationality" value="<?php echo $nationality; ?>" />
       
                     </div>
                 </div>
@@ -107,7 +122,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="text" class="form-control form-control-lg" />
+                      <input type="text" class="form-control form-control-lg" name="gender" value="<?php echo $gender; ?>" />
       
                     </div>
                   </div>
@@ -121,7 +136,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="number" class="form-control form-control-lg" />
+                      <input type="number" class="form-control form-control-lg" name="maxhome" value="<?php echo $maxhome; ?>"/>
       
                     </div>
                 </div>
@@ -133,7 +148,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="number" class="form-control form-control-lg" />
+                      <input type="number" class="form-control form-control-lg" name="maxfor" value="<?php echo $maxfor; ?>"/>
                     </div>
                   </div>   
                   <div class="row align-items-center py-3">
@@ -144,7 +159,7 @@
                     </div>
                     <div class="col-md-9 pe-5">
       
-                      <input type="date" class="form-control form-control-lg" />
+                      <input type="text" placeholder="yyyy-mm-dd" class="form-control form-control-lg" name="sdate" value="<?php echo $sdate; ?>" />
                     </div>
                   </div>  
                   <div class="row align-items-center py-3">
@@ -154,8 +169,7 @@
       
                     </div>
                     <div class="col-md-9 pe-5">
-      
-                      <input type="date" class="form-control form-control-lg" />
+                      <input type="text" placeholder="yyyy-mm-dd" class="form-control form-control-lg" name="edate" value="<?php echo $edate; ?>"/>
                     </div>
                   </div>             
               </div>
@@ -163,7 +177,7 @@
             </div>
             <div class="px-5 py-4" style=" display: flex;
             justify-content: center;">
-                <a  href="eventdisplay.html" class="submit">CONFIRM EVENT</a>
+                <button type="submit" class="submit" name="reg_user"><a href="eventdisplay.php" align="center">Confirm Event</a></button>
               </div>
           </div>
           
