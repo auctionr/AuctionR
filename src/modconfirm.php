@@ -48,49 +48,6 @@
     $sql = "SELECT * FROM PlayerData WHERE PlayerID = '$pid'";
     $playerdataresult = mysqli_query($db, $sql);
 
-
-
-    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      $myusername = $_POST['uname'];
-      $mypassword = $_POST['pwd'];
-      $radioVal = $_POST["radio-button"];
-
-      //TODO: Add mode checking
-      
-      // echo "<script>alert('$myusername');</script>";
-      // echo "<script>alert('$mypassword');</script>";
-      // echo "<script>alert('$radioVal');</script>";
-      
-      $count = 0;
-
-      $sql = "SELECT * FROM Login WHERE username = '$myusername' and password = '$mypassword'";
-      $result=mysqli_query($db,$sql);
-      
-      if ($result){
-        // Return the number of rows in result set
-        $rowcount=mysqli_num_rows($result);
-        $count = $rowcount;
-        mysqli_free_result($result);
-      }
-		
-      if($count == 1) {
-         $_SESSION['username'] = $myusername;
-         $_SESSION['usertype'] = $radioVal;
-         if($radioVal == "Player"){
-          header("Location: playerdashboard.html");
-         }
-         else if($radioVal == "Franchise"){
-          header("Location: franchisedashboard.html");
-         }
-         else if($radioVal == "SportManager"){
-          header("Location: moderators.php");
-         }
-      }else {
-         $error = "Your Login Name or Password is invalid";
-         echo '<script>alert("Login fail, invalid credentials")</script>';
-      }
-   }
     ?>
 
     <?php 
@@ -115,13 +72,41 @@
         <div class="mod-data-box">
           <div class="mod-data-box-sub">
             <div class="mod-data-info">Name:</div>
-            <div class="mod-data-data">
-              <b><?php echo $pdata['Username'] ?></b>
+            
+              <b>
+                <?php 
+                  $namesql = "SELECT * FROM Person P WHERE P.Username='".$pdata['Username']."'";
+                  $namedataresult = mysqli_query($db, $namesql);
+                if($namedataresult){
+                  while($ndata = mysqli_fetch_assoc($namedataresult)){
+                ?>
+                  <div class="mod-data-data">
+                    <?php echo $ndata['FirstName']." ".$ndata['LastName']; ?>
             </div>
+
+                <?php
+                  }
+                }
+                ?>
+              </b>
             <div class="mod-data-info">Sport:</div>
-            <div class="mod-data-data"><?php echo $pdata['Username'] ?></div>
+            
+            <?php 
+                $sportsql = "SELECT * FROM Sports WHERE SportsID = '".$pdata['SportsID']."'";
+                
+                $sportdataresult = mysqli_query($db, $sportsql);
+                if($sportdataresult){
+                  while($sdata = mysqli_fetch_assoc($sportdataresult)){
+            ?>
+              <div class="mod-data-data">
+                <?php echo $sdata['SName']; ?>
+              </div>
+            <?php
+                  }
+                }
+              ?>
             <div class="mod-data-info">Date Of Birth:</div>
-            <div class="mod-data-data"><?php echo $pdata['DOB'] ?></div>
+            <div class="mod-data-data"><?php echo substr($pdata['DOB'], 0, 10) ?></div>
             <div class="mod-data-info">Gender:</div>
             <div class="mod-data-data"><?php echo $pdata['PGender'] ?></div>
           </div>

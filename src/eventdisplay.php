@@ -24,7 +24,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/auctionr.css" />
-    <script
+    <scr
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
       crossorigin="anonymous"
@@ -70,25 +70,40 @@
             <div class="event-display-info">Event Name:</div>
             <div class="event-display-data"><?php echo $edata["EName"] ?></div>
             <div class="event-display-info">Sport:</div>
-            <div class="event-display-data">Cricket</div>
+            
+
+              <?php 
+                $sportsql = "SELECT * FROM Sports WHERE SportsID = '".$edata['SportsID']."'";
+                $sportdataresult = mysqli_query($db, $sportsql);
+                if($sportdataresult){
+                  while($sdata = mysqli_fetch_assoc($sportdataresult)){
+              ?>
+              <div class="event-display-data">
+                <?php echo $sdata['SName']; ?>
+              </div>                  
+              <?php
+                  }
+                }
+              ?>
+
             <div class="event-display-info">Event Start:</div>
-            <div class="event-display-data">1/1/2022</div>
+            <div class="event-display-data"><?php echo substr($edata["EventStart"], 0, 10) ?></div>
             <div class="event-display-info">Event End:</div>
-            <div class="event-display-data">1/2/2022</div>
-            <div class="event-display-info">Event Location:</div>
-            <div class="event-display-data">Rio deJaneiro</div>
+            <div class="event-display-data"><?php echo substr($edata["EventEnd"], 0, 10) ?></div>
+            <!-- <div class="event-display-info">Event Location:</div>
+            <div class="event-display-data"><?php echo $edata["ENationality"] ?></div> -->
           </div>
           <div class="event-box-sub">
             <div class="event-display-info">Nationality:</div>
-            <div class="event-display-data">India</div>
+            <div class="event-display-data"><?php echo $edata["ENationality"] ?></div>
             <div class="event-display-info">Max Home Players:</div>
-            <div class="event-display-data">8</div>
+            <div class="event-display-data"><?php echo $edata["MaxHomePlayers"] ?></div>
             <div class="event-display-info">Max Foreign Players:</div>
-            <div class="event-display-data">4</div>
+            <div class="event-display-data"><?php echo $edata["MaxForiegnPlayers"] ?></div>
             <div class="event-display-info">Gender</div>
-            <div class="event-display-data">Mixed</div>
-            <div class="event-display-info">Event Budget</div>
-            <div class="event-display-data">1000000</div>
+            <div class="event-display-data"><?php echo $edata["EGender"] ?></div>
+            <!-- <div class="event-display-info">Event Budget</div>
+            <div class="event-display-data">1000000</div> -->
           </div>
         </div>
         <button class="event-join">Join Event</button>

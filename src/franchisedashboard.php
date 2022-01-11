@@ -37,7 +37,29 @@
     <!-- ------------------------------------------------------------- -->
   </head>
   <body>
-    <div class="container">
+    <?php 
+    $db = mysqli_connect('localhost', 'root', '','auctionr');
+    if (mysqli_connect_error()) {
+      echo "Failed to connect to MySQL: " . $mysqli_connect_error;
+      exit();
+    }
+    // $franchise = $_SESSION['username'];
+    $franchise = 'shaq';
+    $eid = $_GET['eid'];
+
+    $sql = "SELECT * FROM FranchiseData WHERE Username = '".$franchise."'";
+    $franchisedataresult = mysqli_query($db, $sql);
+
+    $sql = "SELECT * FROM Event WHERE EventID IN (SELECT EventID from FranchiseEvent WHERE FranchiseID = (SELECT FranchiseID from FranchiseData WHERE FName ='".$franchise."))'";
+    $cureventdataresult = mysqli_query($db, $sql);
+
+    $sql = "SELECT * FROM Event WHERE EventID NOT IN (SELECT EventID from FranchiseEvent WHERE FranchiseID = (SELECT FranchiseID from FranchiseData WHERE FName ='".$franchise."))'";
+    $neweventdataresult = mysqli_query($db, $sql);
+    ?>
+
+    
+  {% endif %}
+    <div class="container"> 
       <div class="dash-nav-fran-prof">
         <img
           src="../public/Logo2.png"

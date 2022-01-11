@@ -51,22 +51,25 @@
 
       //TODO: Add mode checking
       
-      // echo "<script>alert('$myusername');</script>";
-      // echo "<script>alert('$mypassword');</script>";
-      // echo "<script>alert('$radioVal');</script>";
+      //  echo "<script>alert('$myusername');</script>";
+      //  echo "<script>alert('$mypassword');</script>";
+      //  echo "<script>alert('$radioVal');</script>";
       
       $count = 0;
 
-      $sql = "SELECT * FROM Login WHERE username = '$myusername' and password = '$mypassword'";
+      $sql = "SELECT * FROM Login WHERE Username='$myusername' and Pass='$mypassword'";
       $result=mysqli_query($db,$sql);
       
-      if ($result){
+      
+   if ($result){
         // Return the number of rows in result set
+       
         $rowcount=mysqli_num_rows($result);
+        
         $count = $rowcount;
         mysqli_free_result($result);
       }
-		
+	
       if($count == 1) {
          $_SESSION['username'] = $myusername;
          $_SESSION['usertype'] = $radioVal;

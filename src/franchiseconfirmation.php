@@ -38,14 +38,19 @@
   </head>
   <body>
     <?php 
-    $db = mysqli_connect('localhost', 'root', '','auctionr');
-    if (mysqli_connect_error()) {
-      echo "Failed to connect to MySQL: " . $mysqli_connect_error;
-      exit();
-    }
-    $eid = $_GET['eid'];
-    $sql = "SELECT * FROM Event WHERE EventID = '$eid'";
-    $eventdataresult = mysqli_query($db, $sql);
+      $db = mysqli_connect('localhost', 'root', '','auctionr');
+      if (mysqli_connect_error()) {
+        echo "Failed to connect to MySQL: " . $mysqli_connect_error;
+        exit();
+      }
+      $pid = $_GET['pid'];
+      $sql = "SELECT * FROM PlayerData WHERE PlayerID = '$pid'";
+      $playerdataresult = mysqli_query($db, $sql);
+    ?>
+
+    <?php 
+      if($playerdataresult){
+        while($pdata = mysqli_fetch_assoc($playerdataresult)){
     ?>
     <div class="container">
       <div class="dash-nav-prof">
@@ -63,13 +68,36 @@
           <div class="mod-data-box">
             <div class="mod-data-box-sub">
               <div class="mod-data-info">Name:</div>
-              <div class="mod-data-data">
-                <b>Lorem, ipsum.</b>
-              </div>
+                <?php 
+                  $namesql = "SELECT * FROM Person P WHERE P.Username='".$pdata['Username']."'";
+                  $namedataresult = mysqli_query($db, $namesql);
+                  if($namedataresult){
+                    while($ndata = mysqli_fetch_assoc($namedataresult)){
+                ?>
+                  <div class="mod-data-data">
+                    <?php echo $ndata['FirstName']." ".$ndata['LastName']; ?>
+                  </div>
+                <?php
+                  }
+                }
+                ?>
               <div class="mod-data-info">Sport :</div>
-              <div class="mod-data-data">Lorem</div>
+              <?php 
+                $sportsql = "SELECT * FROM Sports WHERE SportsID = '".$pdata['SportsID']."'";
+                
+                $sportdataresult = mysqli_query($db, $sportsql);
+                if($sportdataresult){
+                  while($sdata = mysqli_fetch_assoc($sportdataresult)){
+            ?>
+              <div class="mod-data-data">
+                <?php echo $sdata['SName']; ?>
+              </div>
+            <?php
+                  }
+                }
+              ?>
               <div class="mod-data-info">Date Of Birth:</div>
-              <div class="mod-data-data">1/1/2001</div>
+              <div class="mod-data-data"><?php echo substr($pdata['DOB'],0,10); ?></div>
             </div>
             <div class="mod-data-box-sub">
               <div class="mod-data-info">Description:</div>
@@ -88,11 +116,15 @@
           <h3>Confirm Pruchase</h3>
           <form action="" class="mod-form">
             <h6>Price:</h6>
-            <h2>100000</h2>
+            <h2><?php echo $pdata['Price'] ?></h2>
             <button type="submit" class="mod-submit">Confirm Purchase</button>
           </form>
         </div>
       </div>
     </div>
+    <?php 
+        }
+      }
+    ?>
   </body>
 </html>
