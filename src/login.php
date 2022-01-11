@@ -38,31 +38,70 @@
         <div>LOGIN</div>
       </div>
       <?php
-   include("config.php");
+   $db = mysqli_connect('localhost', 'root', '','auctionr');
+   if (mysqli_connect_error()) {
+     echo "Failed to connect to MySQL: " . $mysqli_connect_error;
+     exit();
+   }
    session_start();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
       // username and password sent from form 
+      $myusername = mysqli_real_escape_string($db,$_POST['uname']);
+      $mypassword = mysqli_real_escape_string($db,$_POST['pwd']); 
+      echo '<script>alert('.$myusername.')</script>';
       
-      $myusername = mysqli_real_escape_string($db,$_POST['username']);
-      $mypassword = mysqli_real_escape_string($db,$_POST['password']); 
-      
-      $sql = "SELECT id FROM admin WHERE username = '$myusername' and passcode = '$mypassword'";
+      $count = 0;
+
+      $radioVal = $_POST["radio-button"];
+
+      $sql = "SELECT id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
       $active = $row['active'];
       
       $count = mysqli_num_rows($result);
+
+    //   if($radioVal == "Player"){
+    //   $sql = "SELEC$sql = "SELECT id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
+    //   $result = mysqli_query($db,$sql);
+    //   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    //   $active = $row['active'];
+      
+    //   $count = mysqli_num_rows($result);T id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
+    //   $result = mysqli_query($db,$sql);
+    //   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    //   $active = $row['active'];
+      
+    //   $count = mysqli_num_rows($result);
+    // }
+    // if($radioVal == "Franchise"){
+    //   $sql = "SELECT id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
+    //   $result = mysqli_query($db,$sql);
+    //   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    //   $active = $row['active'];
+      
+    //   $count = mysqli_num_rows($result);
+    // }
+    // if($radioVal == "SportManager"){
+    //   $sql = "SELECT id FROM Login WHERE username = '$myusername' and password = '$mypassword'";
+    //   $result = mysqli_query($db,$sql);
+    //   $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+    //   $active = $row['active'];
+      
+    //   $count = mysqli_num_rows($result);
+    // }
       
       // If result matched $myusername and $mypassword, table row must be 1 row
 		
       if($count == 1) {
          session_register("myusername");
          $_SESSION['login_user'] = $myusername;
-         
-         header("location: welcome.php");
+         $_SESSION['type'] = $radioVal;
+         echo '<script>alert("Login success")</script>';
       }else {
          $error = "Your Login Name or Password is invalid";
+         echo '<script>alert("Login fail")</script>';
       }
    }
 ?>
@@ -75,15 +114,18 @@
             <span style="padding-right:3rem;">Player</span>
           </label>
           <label>
-            <input type="radio" name="radio-button" value="franchise" />
+            <input type="radio" name="radio-button" value="Franchise" />
             <span style="padding-right:3rem;">Franchise</span>
           </label>
           <label>
             <input type="radio" name="radio-button" value="Manager" />
             <span style="padding-right:3rem;">Manager</span>
           </label>
+          
         </fieldset>
-        <a class="signin">SIGN IN</a>
+        <input type="submit" class="signin" value="Sign In  ">
+  </form>
+        
         <p class="new-reg">Not registered yet?
         <h1 class="about-title">REGISTER AS </h1>
         <div class="tabs2">
