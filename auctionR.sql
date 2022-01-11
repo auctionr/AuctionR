@@ -60,9 +60,10 @@ create table PlayerData (PlayerID varchar(5)primary key,
                          SportsID varchar(5) not null,  
                          FranchiseID varchar(10),  
                          PGender varchar(6) not null,  
-                         PNationality varchar(20) not null,  
+                         PNationality varchar(20) not null, 
                          Price numeric(10) not null,  
                          DOB date not null,  
+                         verified varchar(3) 
                          foreign key(Username) references Person);
 
 create table Player_Phone (PlayerID varchar(5), 
@@ -285,20 +286,20 @@ insert into parameter values('B03','SP102', 'BallCtrl');
 insert into parameter values('B00','SP102', 'Overall');
 
 
-insert into playerdata values('CA001','msd7','SP101','','M','INDIAN','100000','1997-03-03');
-insert into playerdata values('CA002','vk18','SP101','','Male','INDIAN','100000','1989-12-06');
-insert into playerdata values('CA004','klrahul','SP101','','M','INDIAN','99000','1990-01-04');
-insert into playerdata values('BA002','kingJames','SP102','','M','AMERICAN','199000','1997-08-23');
-insert into playerdata values('BA003','sc30','SP102','','M','SERBIAN','112000','1997-03-09');
-insert into playerdata values('BA004','kd35','SP102','','M','BRITISH','123000','1996-02-29');
-insert into playerdata values('BA005','kobebryant','SP102','','M','NIGERIAN','102200','1989-07-26');
-insert into playerdata values('BA006','illuminati2','SP102','','M','AUSTRALIAN','120000','85-12-31');
-insert into playerdata values('BA007','pg13','SP102','','M','PAKISTANI','100000','1993-06-18');
-insert into playerdata values('BA008','westbrook0','SP102','','M','BANGLADESHI','110000','1993-07-19');
-insert into playerdata values('BA009','ad3','SP102','','M','AMERICAN','100000','1990-03-20');
-insert into playerdata values('BA010','alexcaruso','SP102','','M','MEXICAN','123000','1992-04-21');
-insert into playerdata values('BA011','jimmybutler','SP102','','M','AMERICAN','113500','2001-06-23');
-insert into playerdata values('BA012','derozan','SP102','','M','AMERICAN','123400','1999-01-03');
+insert into playerdata values('CA001','msd7','SP101','','M','INDIAN','100000','1997-03-03','yes');
+insert into playerdata values('CA002','vk18','SP101','','Male','INDIAN','100000','1989-12-06','yes');
+insert into playerdata values('CA004','klrahul','SP101','','M','INDIAN','99000','1990-01-04','yes');
+insert into playerdata values('BA002','kingJames','SP102','','M','AMERICAN','199000','1997-08-23','yes');
+insert into playerdata values('BA003','sc30','SP102','','M','SERBIAN','112000','1997-03-09','yes');
+insert into playerdata values('BA004','kd35','SP102','','M','BRITISH','123000','1996-02-29','yes');
+insert into playerdata values('BA005','kobebryant','SP102','','M','NIGERIAN','102200','1989-07-26','yes');
+insert into playerdata values('BA006','illuminati2','SP102','','M','AUSTRALIAN','120000','85-12-31','yes');
+insert into playerdata values('BA007','pg13','SP102','','M','PAKISTANI','100000','1993-06-18','yes');
+insert into playerdata values('BA008','westbrook0','SP102','','M','BANGLADESHI','110000','1993-07-19','yes');
+insert into playerdata values('BA009','ad3','SP102','','M','AMERICAN','100000','1990-03-20','yes');
+insert into playerdata values('BA010','alexcaruso','SP102','','M','MEXICAN','123000','1992-04-21','no');
+insert into playerdata values('BA011','jimmybutler','SP102','','M','AMERICAN','113500','2001-06-23','yes');
+insert into playerdata values('BA012','derozan','SP102','','M','AMERICAN','123400','1999-01-03','no');
 
 insert into player_phone values('CA004',4696620124);
 insert into player_phone values('CA001',6587759980);
