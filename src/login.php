@@ -114,11 +114,11 @@
         <div class="tabs2">
 
           <div class="tab2">
-            <div><a href="playerregister.html">&nbsp&nbsp&nbspPLAYER&nbsp&nbsp&nbsp&nbsp</div></a>
+            <div><a href="playerregister.php">&nbsp&nbsp&nbspPLAYER&nbsp&nbsp&nbsp&nbsp</div></a>
 
           </div>
           <div class="tab2">
-            <div><a href="franchiseregister.html">FRANCHISE</div></a>
+            <div><a href="franchiseregister.php">FRANCHISE</div></a>
           </div>
         </div>
         </p>
