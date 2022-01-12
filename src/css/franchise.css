@@ -31,10 +31,7 @@
   flex-direction: column;
   width: 100%
 }
-.dash-main{
-  display: flex;
-  flex-direction: row-reverse;
-}
+
 .dash-fran-prof{
   display: flex;
   flex-direction: column;
