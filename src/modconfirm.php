@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -126,7 +127,7 @@
         </div>
       </div>
       <div class="mod-player-data-check">
-        <form action="" class="mod-form">
+        <form action="modconfirm.php" class="mod-form" method="POST">
           <h2>Checks:</h2>
           <div class="mod-data-box-checks">
             <div class="mod-player-form-field">
@@ -135,11 +136,11 @@
             </div>
             <div class="mod-player-form-field">
               <label for="validId" class="form-label">Rating: </label>
-              <input type="number" name="rating" id="rating" class="form-box"/>
+              <input type="number" name="rating" id="rating" class="form-box" name="overall"/>
             </div>
             <div class="mod-player-form-field">
               <label for="price" class="form-label">Price: </label>
-              <input type="number" name="price" id="price" class="form-box"/>
+              <input type="number" name="price" id="price" class="form-box" name="price"/>
             </div>
           </div>
           <h2>Stats:</h2>
@@ -154,22 +155,21 @@
             </div> -->
             <div class="mod-player-form-field">
               <label for="validId" class="form-label">Handling</label>
-              <input type="number" name="rating" id="rating" class="form-box"/>
+              <input type="number" name="rating" id="rating" class="form-box" name="handling"/>
             </div>
             <div class="mod-player-form-field">
               <label for="validId" class="form-label">Defense</label>
-              <input type="number" name="rating" id="rating" class="form-box"/>
+              <input type="number" name="rating" id="rating" class="form-box" name="defense"/>
             </div>
             <div class="mod-player-form-field">
               <label for="validId" class="form-label">Shooting</label>
-              <input type="number" name="rating" id="rating" class="form-box"/>
+              <input type="number" name="rating" id="rating" class="form-box" name="shooting"/>
             </div>
           </div>
-          <button type="submit" class="mod-submit">Submit</button>
+          <button type="submit" class="mod-submit" name="verified" >Submit</button>
         </form>
       </div>
     </div>
-
     <?php
         }
       }

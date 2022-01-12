@@ -39,8 +39,8 @@
  
   // Perform query
   //person table (first, last name), ParameterPlayer(parameters), PlayerData()
-  $sql = "SELECT P.FirstName,P.LastName,A.PGender,A.PNationality,A.Username,A.PlayerID,A.Price,B.Value from Person P, PlayerData A , ParameterPlayer B where P.Username=A.Username and B.PlayerID=A.PlayerID and B.ParameterID like '_00'";
-  
+  $sql = "SELECT P.FirstName,P.LastName,A.PGender,A.PNationality,A.Username,A.PlayerID,A.Price,B.Value from Person P, PlayerData A , ParameterPlayer B where P.Username=A.Username and B.PlayerID=A.PlayerID and B.ParameterID like '_00' and A.FranchiseID=''";
+  $fid = $_GET['fid'];
 ?>
 
 
@@ -124,7 +124,7 @@
             <td><?php echo $rows['Value'];?></td>
          
             <td><?php echo $rows['Price'];?></td>
-            <td><a href="franchiseconfirmation.html"> <button class="table-btn">Add</button></a></td>
+            <td><a href=<?php echo "franchiseconfirmation.php?pid=".$rows['PlayerID']."&fid=".$fid; ?>> <button class="table-btn">Add</button></a></td>
           </tr>
           <?php
     }

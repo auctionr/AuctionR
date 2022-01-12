@@ -257,7 +257,7 @@ insert into manager values('B100','spalder23', 'SP102');
 insert into manager values('B101','fareekh', 'SP102');
 insert into manager values('B102','ricardo', 'SP102');
 insert into manager values('B103','samsupremacy', 'SP102');
-insert into manager values('B104','chemams', 'SP102');
+insert into manager vhttps://meet.google.com/bxr-ckoz-ygjalues('B104','chemams', 'SP102');
 insert into manager values('C100','milliebbrown', 'SP101');
 insert into manager values('C101','onisan', 'SP101');
 insert into manager values('C102','senpai', 'SP101');

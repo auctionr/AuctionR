@@ -21,8 +21,9 @@
 }
 
 
-.dash-main{
+.dash-main {
   display: flex;
+  flex-direction: row-reverse;
 }
 
 .dash-data{
@@ -30,7 +31,9 @@
   flex-direction: column;
   width: 100%
 }
-
+.dash-main{
+  flex-direction: row-reverse;
+}
 .dash-fran-prof{
   display: flex;
   flex-direction: column;

@@ -44,13 +44,18 @@
         exit();
       }
       $pid = $_GET['pid'];
+      $fid = $_GET['fid'];
       $sql = "SELECT * FROM PlayerData WHERE PlayerID = '$pid'";
       $playerdataresult = mysqli_query($db, $sql);
+
+      $franuname = "";
+      
     ?>
 
     <?php 
       if($playerdataresult){
         while($pdata = mysqli_fetch_assoc($playerdataresult)){
+          $franuname = $pdata['Username'];
     ?>
     <div class="container">
       <div class="dash-nav-prof">
@@ -113,11 +118,18 @@
           </div>
         </div>
         <div class="confirm-buy">
+        <?php
+        if(isset($_POST['purchasebtn'])) {
+          $sql = "UPDATE PlayerData SET FranchiseID='$fid' WHERE PlayerID='$pid'";
+          mysqli_query($db, $sql);
+          header("Location: franchisedashboard.php?uname=".$franuname);
+        }
+        ?>
           <h3>Confirm Pruchase</h3>
-          <form action="" class="mod-form">
+          <form action="" class="mod-form" method="post">
             <h6>Price:</h6>
             <h2><?php echo $pdata['Price'] ?></h2>
-            <button type="submit" class="mod-submit">Confirm Purchase</button>
+            <button type="submit" class="mod-submit" name="purchasebtn" id="purchasebtn">Confirm Purchase</button>
           </form>
         </div>
       </div>

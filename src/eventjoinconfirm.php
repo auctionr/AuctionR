@@ -44,6 +44,7 @@
       exit();
     }
     $eid = $_GET['eid'];
+    $fid = $_GET['fid'];
     $sql = "SELECT * FROM Event WHERE EventID = '$eid'";
     $eventdataresult = mysqli_query($db, $sql);
     ?>
@@ -106,7 +107,24 @@
             <div class="event-display-data">1000000</div> -->
           </div>
         </div>
-        <!-- <button class="event-join">Join Event</button> -->
+        <?php 
+          if(isset($_POST['join'])){
+            $sql = "INSERT INTO FranchiseEvent VALUES ('$fid', '$eid')";
+            mysqli_query($db, $sql);
+            $sql1 = "SELECT * FROM PlayerData WHERE FranchiseID='".$fid."'";
+            $sq1res = mysqli_query($db, $sql1);
+            if($sq1res){
+              while($sqpdata = mysqli_fetch_assoc($sq1res)){
+                $sql2 = "INSERT INTO PlayerEvent (PlayerID, EventID) VALUES ('".$sqpdata["PlayerID"]."','".$eid."')";
+                mysqli_query($sql2);
+              }
+            }
+            header("Location: eventdisplay.php?eid=".$eid);
+          }
+        ?>
+        <form method="post">
+        <button type="submit" name="join" class="event-join">Join Event</button>
+        </form>
       </div>
     </div>
 

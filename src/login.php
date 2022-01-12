@@ -74,13 +74,13 @@
          $_SESSION['username'] = $myusername;
          $_SESSION['usertype'] = $radioVal;
          if($radioVal == "Player"){
-          header("Location: playerdashboard.html");
+          header("Location: playerdashboard.php?uname=".$myusername);
          }
          else if($radioVal == "Franchise"){
-          header("Location: franchisedashboard.html");
+          header("Location: franchisedashboard.php?uname=".$myusername);
          }
          else if($radioVal == "SportManager"){
-          header("Location: moderators.php");
+          header("Location: moderators.php?uname=".$myusername);
          }
       }else {
          $error = "Your Login Name or Password is invalid";

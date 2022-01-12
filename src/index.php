@@ -38,14 +38,12 @@
     <!-- ------------------------------------------------------------- -->
   </head>
   <body>
-    <?php
-    echo "hello";
-    ?>
+   
     <div class="container">
       <div class="hero">
         <div class="home-nav">
           <div class="btn yellow-home-btn">
-            <a href="./login.html"> Login/Register </a>
+            <a href="login.php"> Login/Register </a>
           </div>
         </div>
         <div class="home-logo">

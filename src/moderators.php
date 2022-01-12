@@ -44,6 +44,7 @@
       echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
       exit();
     }
+    $mod = $_GET['uname'];
    
     // Perform query
     //person table (first, last name), ParameterPlayer(parameters), PlayerData()
@@ -64,7 +65,7 @@
       <div class="mod">
         <div class="table-top">
           <h2 class="player-req">Player requests:</h2>
-          <a href="events.html"><button class="add-event">Add event</button></a>
+          <a href="events.php"><button class="add-event">Add event</button></a>
         </div>
 
         <table class="table table-dark table-hover">
@@ -72,8 +73,7 @@
           <?php
          // Perform query
     //person table (first, last name), ParameterPlayer(parameters), PlayerData()
-   $sql = "SELECT FirstName,LastName from Person P where Username='milliebbrown'"; 
-  // $sql = "SELECT S.SName, A.FirstName, A.LastName from (select P.FirstName, P.LastName from Person P, Manager M where P.Username ='milliebbrown') A Manager M Sports S where S.SportsID = M.SportsID)";
+   $sql = "SELECT FirstName,LastName from Person P where Username='".$mod."'"; 
   
    if ($result = $mysqli -> query($sql)) {
     while ($rows=mysqli_fetch_assoc($result)) {
@@ -90,6 +90,7 @@
   ?>
        
   </table>
+  <ul>
         <?php
          // Perform query
     //person table (first, last name), ParameterPlayer(parameters), PlayerData()
@@ -98,18 +99,19 @@
     while ($rows=mysqli_fetch_assoc($result)) {
   ?>
         
-         <ul>
+         
           <li>
-          <?php echo "<a href='modconfirm.php?pid=".$rows['PlayerID']."'>".$rows['FirstName']." ".$rows['LastName']."</a>";
-        ?><span class="close">&times;</span>
+          <?php echo "<a href='modconfirm.php?pid=".$rows['PlayerID']."'>".$rows['FirstName']." ".$rows['LastName']."</a>";?>
+          <span class="close">&times;</span>
         </li>
-    </ul>
+    
           <?php 
     }
     $result->free_result();
         }
 
   ?>
+  </ul>
   </div>
  
      

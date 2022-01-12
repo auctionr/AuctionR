@@ -44,17 +44,24 @@
       exit();
     }
     // $franchise = $_SESSION['username'];
-    $franchise = 'shaq';
-    $eid = $_GET['eid'];
+    // $franchise = 'harden';
+    $franchise = $_GET['uname'];
 
     $sql = "SELECT * FROM FranchiseData WHERE Username = '".$franchise."'";
     $franchisedataresult = mysqli_query($db, $sql);
 
-    $sql = "SELECT * FROM Event WHERE EventID IN (SELECT EventID from FranchiseEvent WHERE FranchiseID = (SELECT FranchiseID from FranchiseData WHERE FName ='".$franchise."))'";
+    $sql = "SELECT * FROM Event WHERE EventID IN (SELECT EventID from FranchiseEvent WHERE FranchiseID = (SELECT FranchiseID from FranchiseData WHERE Username ='".$franchise."'))";
     $cureventdataresult = mysqli_query($db, $sql);
 
-    $sql = "SELECT * FROM Event WHERE EventID NOT IN (SELECT EventID from FranchiseEvent WHERE FranchiseID = (SELECT FranchiseID from FranchiseData WHERE FName ='".$franchise."))'";
+    $sql = "SELECT * FROM Event WHERE EventID NOT IN (SELECT EventID from FranchiseEvent WHERE FranchiseID = (SELECT FranchiseID from FranchiseData WHERE Username ='".$franchise."'))";
     $neweventdataresult = mysqli_query($db, $sql);
+
+    $sql = "SELECT * FROM PlayerData WHERE FranchiseID = (SELECT FranchiseID FROM FranchiseData WHERE Username='".$franchise."')";
+    
+    $playerdataresult = mysqli_query($db, $sql);
+
+    $franid = "";
+ 
     ?>
 
     <div class="container"> 
@@ -68,95 +75,12 @@
         <div>Franchise Dashboard</div>
       </div>
       <div class="dash-main">
-        <div class="dash-data">
 
-          <?php 
-            if($cureventdataresult){
-              while($cdata = mysqli_fetch_assoc($cureventdataresult)){
-          ?>
-
-          <?php
-              }
-            }
-          ?>
-
-          <div class="my-events">
-            <h2>My Events</h2>
-            <div class="event-data">
-              <div class="event-card">
-                <div class="event-card-title">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </div>
-                <div class="event-card-date">From 10/12/2021 To 30/1/2022</div>
-              </div>
-              <div class="event-divider"></div>
-              <div class="event-card">
-                <div class="event-card-title">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </div>
-                <div class="event-card-date">From 10/12/2021 To 30/1/2022</div>
-              </div>
-              <div class="event-divider"></div>
-              <div class="event-card">
-                <div class="event-card-title">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </div>
-                <div class="event-card-date">From 10/12/2021 To 30/1/2022</div>
-              </div>
-            </div>
-          </div>
-          
-          
-          
-          <div class="other-events">
-            <h2>Other Events</h2>
-            <div class="event-data">
-              <div class="event-card">
-                <div class="event-card-title">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </div>
-                <div class="join-event-card">
-                  <div class="event-card-date">
-                    From 10/12/2021 To 30/1/2022
-                  </div>
-                  <a href="eventdisplay.html">
-                    <button class="event-join-btn">Join</button>
-                  </a>
-                </div>
-              </div>
-              <div class="event-divider"></div>
-              <div class="event-card">
-                <div class="event-card-title">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </div>
-                <div class="join-event-card">
-                  <div class="event-card-date">
-                    From 10/12/2021 To 30/1/2022
-                  </div>
-                  <a href="eventdisplay.html">
-                    <button class="event-join-btn">Join</button>
-                  </a>
-                </div>
-              </div>
-              <div class="event-divider"></div>
-              <div class="event-card">
-                <div class="event-card-title">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                </div>
-                <div class="join-event-card">
-                  <div class="event-card-date">
-                    From 10/12/2021 To 30/1/2022
-                  </div>
-                  <a href="eventdisplay.html">
-                  <button class="event-join-btn">Join</button>
-                </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
+        <?php 
+            if($franchisedataresult){
+              while($fdata = mysqli_fetch_assoc($franchisedataresult)){
+                $franid = $fdata['FranchiseID']
+        ?>
 
         <div class="fran-dash-right">
           <div class="dash-fran-prof">
@@ -164,9 +88,9 @@
               <img src="../public/LogoA.png" alt="Logog" />
             </div>
             <div class="fran-prof-info">Name:</div>
-            <div class="fran-prof-name">Lorem, ipsum.</div>
+            <div class="fran-prof-name"><?php echo $fdata['FName']; ?></div>
             <div class="fran-prof-info">Credits:</div>
-            <div class="fran-prof-budget">34</div>
+            <div class="fran-prof-budget"><?php echo $fdata['Credit']; ?></div>
             <div class="fran-prof-info">Description:</div>
             <div class="fran-prof-desc">
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -175,21 +99,105 @@
             <div class="fran-prof-info">Team:</div>
             <div class="fran-prof-team">
               <ul>
-                <li>Lorem, ipsum.</li>
-                <li>Lorem, ipsum.</li>
-                <li>Lorem, ipsum.</li>
-                <li>Lorem, ipsum.</li>
-                <li>Lorem, ipsum.</li>
-                <li>Lorem, ipsum.</li>
-                <li>Lorem, ipsum.</li>
-                <li>Lorem, ipsum.</li>
+              
+              <?php 
+                if($playerdataresult){
+                  while($pldata = mysqli_fetch_assoc($playerdataresult)){
+              ?>
+                <?php 
+                  $namesql = "SELECT * FROM Person WHERE Username='".$pldata['Username']."'";
+                  $namedataresult = mysqli_query($db, $namesql);
+                if($namedataresult){
+                  while($ndata = mysqli_fetch_assoc($namedataresult)){
+                ?>
+                <li>
+                  <?php echo $ndata['FirstName']." ".$ndata['LastName']; ?>
+                </li>
+                <?php 
+                  }
+                }
+                ?>  
+
+<?php 
+                }
+              }
+              ?>
               </ul>
+              <?php 
+                }
+              }
+              ?>
             </div>
           </div>
-          <a href="addplayer.html">
+          <a href=<?php echo "addplayer.php?fid=".$franid; ?>>
             <button class="event-join-btn">Add Player</button>
           </a>
+          </div>
+          
+        
+          <div class="dash-data">
+          <div div class="my-events">
+
+            <h2>My Events</h2>
+            <div class="event-data">
+
+          <?php 
+            if($cureventdataresult){
+              while($cdata = mysqli_fetch_assoc($cureventdataresult)){
+          ?>
+              <a href = <?php echo "eventdisplay.php?eid=".$cdata['EventID']; ?> >
+                <div class="event-card">
+                  <div class="event-card-title">
+                    <?php echo $cdata['EName']; ?>
+                  </div>
+                  <div class="event-card-date">From <?php echo substr($cdata['EventStart'],0,10); ?> To <?php echo substr($cdata['EventEnd'], 0, 10); ?></div>
+                </div>
+              </a>
+              <div class="event-divider"></div>
+          <?php
+              }
+            }
+          ?>
+
+            </div>
+          </div>
+          
+
+          <div class="other-events">
+            <h2>Other Events</h2>
+            <div class="event-data">
+
+              <?php 
+                if($neweventdataresult){
+                  while($ndata = mysqli_fetch_assoc($neweventdataresult)){
+              ?>
+              
+              <div class="event-card">
+              <a href = <?php echo "eventdisplay.php?eid=".$ndata['EventID']; ?> >
+                <div class="event-card-title">
+                  <a href=<?php echo "eventdisplay.php?eid=".$ndata['EventID']; ?>>
+                    <?php echo $ndata['EName']; ?>
+                  </a>
+                </div>
+              </a>  
+                <div class="join-event-card">
+                  <div class="event-card-date">
+                    From <?php echo substr($ndata['EventStart'], 0, 10); ?> To <?php echo substr($ndata['EventEnd'], 0, 10); ?>
+                  </div>
+                  <a class = "event-join-btn" href = <?php echo "eventjoinconfirm.php?eid=".$ndata['EventID']."&fid=".$franid; ?>> JOIN </a>
+                </div>
+              </div>
+              <div class="event-divider"></div>
+              
+              <?php
+                  }
+                }
+              ?>
+
+            </div>
+          </div>
         </div>
+        
       </div>
     </div>
   </body>
